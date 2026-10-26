@@ -40,6 +40,27 @@ Specification, design, and task plan are approved. The repository is in the boot
 
 When Docker is unavailable, integration tests use `TEST_DB_CONNECTION` against a disposable local PostgreSQL instance.
 
+## Local development
+
+`docker-compose.yml` is the supported local path. It starts PostgreSQL 16 with a named volume and a `pg_isready` healthcheck:
+
+```bash
+docker compose up -d postgres
+docker compose ps
+```
+
+Validate the compose file with `docker compose config` on a machine with Docker Compose installed. This bootstrap environment does not have Docker, so the YAML was checked with a parser instead.
+
+This environment uses rootless Podman as the local fallback. Start or reuse a PostgreSQL 16 container, then export `TEST_DB_CONNECTION` before running integration tests:
+
+```bash
+export TEST_DB_CONNECTION='Host=localhost;Port=5432;Database=sprintup_test;Username=sprintup;Password=sprintup'
+```
+
+The test fixture creates and drops its own per-run schema. It refuses to run against a non-empty database, so keep the `public` schema empty.
+
+Copy `.env.example` to `.env` and fill only what you need. The documented keys are `ConnectionStrings__SprintUp`, `Strava__ClientId`, `Strava__ClientSecret`, `Strava__RedirectUri`, `DataProtection__KeysPath`, `Admin__BootstrapEmail`, `Admin__BootstrapPassword`, and the `TEST_DB_CONNECTION` fallback. Do not commit `.env`.
+
 ## Quality gates
 
 The `Makefile` targets are introduced in T5:

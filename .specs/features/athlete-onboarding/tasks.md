@@ -209,10 +209,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `docker-compose.yml` defines PostgreSQL 16 with a named volume and a `pg_isready` healthcheck.
-- [ ] The connection string, Strava settings, Data Protection path, admin bootstrap secret, and `TEST_DB_CONNECTION` fallback are documented as environment variables.
-- [ ] `docker compose config` validates on a Docker-enabled machine; the Docker prerequisite is called out for local runs.
-- [ ] Test count: 0 (configuration only).
+- [x] `docker-compose.yml` defines PostgreSQL 16 with a named volume and a `pg_isready` healthcheck.
+- [x] The connection string, Strava settings, Data Protection path, admin bootstrap secret, and `TEST_DB_CONNECTION` fallback are documented as environment variables.
+- [x] `docker compose config` validates on a Docker-enabled machine; the Docker prerequisite is called out for local runs.
+- [x] Test count: 0 (configuration only).
 
 **Tests**: none
 **Gate**: pre-make-build
