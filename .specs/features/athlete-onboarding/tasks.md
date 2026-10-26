@@ -231,10 +231,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `SprintUp.UnitTests`, `SprintUp.IntegrationTests`, `SprintUp.UiTests`, `SprintUp.E2E`, and `SprintUp.PerformanceTests` reference the host and the agreed packages (xUnit, FluentAssertions, Moq, bUnit, Testcontainers, Playwright).
-- [ ] `PostgresFixture` creates a per-run schema, supports `TEST_DB_CONNECTION`, and refuses a non-empty database.
-- [ ] `DatabaseSmokeTests.CanConnectAndCreateSchema` passes against the compose database or `TEST_DB_CONNECTION`.
-- [ ] Test count: 1 integration test passes.
+- [x] `SprintUp.UnitTests`, `SprintUp.IntegrationTests`, `SprintUp.UiTests`, `SprintUp.E2E`, and `SprintUp.PerformanceTests` reference the host and the agreed packages (xUnit, FluentAssertions, Moq, bUnit, Testcontainers, Playwright).
+- [x] `PostgresFixture` creates a per-run schema, supports `TEST_DB_CONNECTION`, and refuses a non-empty database.
+- [x] `DatabaseSmokeTests.CanConnectAndCreateSchema` passes against the compose database or `TEST_DB_CONNECTION`.
+- [x] Test count: 1 integration test passes.
 
 **Tests**: integration
 **Gate**: pre-make-full
