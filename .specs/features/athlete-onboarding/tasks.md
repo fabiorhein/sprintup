@@ -38,6 +38,8 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 | Gate Level | When to Use | Command |
 | ---------- | ----------- | ------- |
 | Bootstrap | T1 only, before a solution exists | `git diff --check; test -f .editorconfig; test -f global.json; test -f Directory.Build.props` |
+| Pre-Makefile build | T2-T3, before the Makefile exists | `dotnet build SprintUp.sln -warnaserror` |
+| Pre-Makefile full | T4, before the Makefile exists | `TEST_DB_CONNECTION=<conn> dotnet test tests/SprintUp.IntegrationTests/SprintUp.IntegrationTests.csproj -warnaserror` |
 | Quick | After tasks with unit tests only | `make test-unit` |
 | Full | After tasks with integration or UI tests | `make test-unit; make test-integration; make test-ui` |
 | Build | After phase completion or config/entity-only tasks | `make build; make lint; make harness` |
@@ -191,7 +193,7 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 - [ ] Test count: 0 (no test project yet).
 
 **Tests**: none
-**Gate**: build
+**Gate**: pre-make-build
 
 **Commit**: `feat(host): create .NET 10 Blazor solution and resource skeleton`
 
@@ -213,7 +215,7 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 - [ ] Test count: 0 (configuration only).
 
 **Tests**: none
-**Gate**: build
+**Gate**: pre-make-build
 
 **Commit**: `chore(infra): add PostgreSQL compose service and configuration keys`
 
@@ -235,7 +237,7 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 - [ ] Test count: 1 integration test passes.
 
 **Tests**: integration
-**Gate**: full
+**Gate**: pre-make-full
 
 **Commit**: `test(harness): add test projects and PostgreSQL fixture`
 
@@ -324,7 +326,7 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 - [ ] Test count: 5 integration tests pass.
 
 **Tests**: integration
-**Gate**: full
+**Gate**: build
 
 **Commit**: `feat(host): compose health, culture, antiforgery, and rate limiting`
 
@@ -2266,8 +2268,8 @@ Proof: `dotnet test tests/SprintUp.E2E/SprintUp.E2E.csproj --no-build --filter "
 
 The feature's live state, written as it happens - a compaction gives no warning.
 
-**Settled mid-build:** the GitHub repository is public at `https://github.com/fabiorhein/sprintup`; `gh` is installed at `~/.local/bin/gh` because `sudo` requires an interactive password.
-**Dispatched:** none
+**Settled mid-build:** the GitHub repository is public at `https://github.com/fabiorhein/sprintup`; `gh` is installed at `~/.local/bin/gh` because `sudo` requires an interactive password; the local container runtime is Podman (rootless) because Docker is not installed, with PostgreSQL 16 at `localhost:5432`, database `sprintup_test`, user and password `sprintup`, reached through `TEST_DB_CONNECTION`.
+**Dispatched:** 2026-10-26 - Phase 1 batch (T2-T8) to a general sub-agent; base commit 1014f9f; returned: pending.
 **Walked:** none
 
 ---
