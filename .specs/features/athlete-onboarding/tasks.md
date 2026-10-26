@@ -187,10 +187,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `SprintUp.sln` contains `src/SprintUp/SprintUp.csproj` targeting `net10.0` with the Blazor Web App template and InteractiveServer.
-- [ ] `src/SprintUp/Shared/Resources/SharedResources.resx` (English neutral) and `SharedResources.pt-BR.resx` exist with the shell keys.
-- [ ] `dotnet build SprintUp.sln -warnaserror` passes.
-- [ ] Test count: 0 (no test project yet).
+- [x] `SprintUp.sln` contains `src/SprintUp/SprintUp.csproj` targeting `net10.0` with the Blazor Web App template and InteractiveServer.
+- [x] `src/SprintUp/Shared/Resources/SharedResources.resx` (English neutral) and `SharedResources.pt-BR.resx` exist with the shell keys.
+- [x] `dotnet build SprintUp.sln -warnaserror` passes.
+- [x] Test count: 0 (no test project yet).
 
 **Tests**: none
 **Gate**: pre-make-build
