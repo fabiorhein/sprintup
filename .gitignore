@@ -1,0 +1,68 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+publish/
+
+# Test results and coverage
+TestResults/
+coverage/
+*.trx
+*.coverage
+*.coveragexml
+*.cobertura.xml
+*.opencover.xml
+
+# IDE and editor state
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Development.json
+appsettings.*.local.json
+*.pfx
+*.p12
+*.key
+*.pem
+
+# Data Protection key ring
+keys/
+**/DataProtection-Keys/
+*.dpkey
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+.playwright-cli/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*~
