@@ -253,10 +253,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] Targets exist for `restore`, `build`, `lint`, `test-unit`, `test-integration`, `test-ui`, `test-e2e`, `harness-fast`, `harness`, and `perf`.
-- [ ] `make build` runs `dotnet build SprintUp.sln -warnaserror`; `make lint` runs `dotnet format SprintUp.sln --verify-no-changes`.
-- [ ] `make harness` fails with a clear prerequisite message when Docker or Playwright browsers are missing; it never silently skips.
-- [ ] Test count: 0 (tooling only).
+- [x] Targets exist for `restore`, `build`, `lint`, `test-unit`, `test-integration`, `test-ui`, `test-e2e`, `harness-fast`, `harness`, and `perf`.
+- [x] `make build` runs `dotnet build SprintUp.sln -warnaserror`; `make lint` runs `dotnet format SprintUp.sln --verify-no-changes`.
+- [x] `make harness` fails with a clear prerequisite message when Docker or Playwright browsers are missing; it never silently skips.
+- [x] Test count: 0 (tooling only).
 
 **Tests**: none
 **Gate**: build
