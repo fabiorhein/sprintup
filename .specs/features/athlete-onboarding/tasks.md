@@ -297,10 +297,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `DomainException`, `ValidationException`, and `NotFoundException` map to `ProblemDetails` with stable `code` values and per-field errors.
-- [ ] Unexpected exceptions return `500` with a correlation ID and never a stack trace, SQL, token, or health value.
-- [ ] Tests cover domain conflict, validation fields, not found, and unexpected error.
-- [ ] Test count: 4 integration tests pass.
+- [x] `DomainException`, `ValidationException`, and `NotFoundException` map to `ProblemDetails` with stable `code` values and per-field errors.
+- [x] Unexpected exceptions return `500` with a correlation ID and never a stack trace, SQL, token, or health value.
+- [x] Tests cover domain conflict, validation fields, not found, and unexpected error.
+- [x] Test count: 4 integration tests pass.
 
 **Tests**: integration
 **Gate**: full
