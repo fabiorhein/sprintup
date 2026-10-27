@@ -2269,7 +2269,9 @@ Proof: `dotnet test tests/SprintUp.E2E/SprintUp.E2E.csproj --no-build --filter "
 The feature's live state, written as it happens - a compaction gives no warning.
 
 **Settled mid-build:** the GitHub repository is public at `https://github.com/fabiorhein/sprintup`; `gh` is installed at `~/.local/bin/gh` because `sudo` requires an interactive password; the local container runtime is Podman (rootless) because Docker is not installed, with PostgreSQL 16 at `localhost:5432`, database `sprintup_test`, user and password `sprintup`, reached through `TEST_DB_CONNECTION`.
-**Dispatched:** 2026-10-26 - Phase 1 batch (T2-T8) to a general sub-agent; base commit 1014f9f; returned: pending.
+**Dispatched:** 2026-10-26 - Phase 1 batch (T2-T8) to a general sub-agent; base commit 1014f9f; returned: complete.
+**Phase 1:** complete 2026-10-27 - T2-T8 implemented, gated, and committed (`631319e`, `05b61c6`, `18b0780`, `44533b8`, `adaa06c`, `4438c33`, `c47a11c`).
+**Host probes:** the Testing-only diagnostics endpoints are mapped only when `ASPNETCORE_ENVIRONMENT=Testing` and `Diagnostics:Enabled=true`; they are never mapped in Development, Staging, or Production.
 **Walked:** none
 
 ---
