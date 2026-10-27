@@ -275,10 +275,10 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `SprintUpDbContext` exposes module-owned `DbSet` placeholders and applies `IEntityTypeConfiguration` classes from the assembly.
-- [ ] UTC timestamps, integer enums, `jsonb`, normalized-email siblings, and `xmin` concurrency are configured as conventions.
-- [ ] `SprintUpDbContextTests.Model_BuildsWithoutErrors` and `CanPersistAndRollback` pass against PostgreSQL.
-- [ ] Test count: 2 integration tests pass.
+- [x] `SprintUpDbContext` exposes module-owned `DbSet` placeholders and applies `IEntityTypeConfiguration` classes from the assembly.
+- [x] UTC timestamps, integer enums, `jsonb`, normalized-email siblings, and `xmin` concurrency are configured as conventions.
+- [x] `SprintUpDbContextTests.Model_BuildsWithoutErrors` and `CanPersistAndRollback` pass against PostgreSQL.
+- [x] Test count: 2 integration tests pass.
 
 **Tests**: integration
 **Gate**: full
