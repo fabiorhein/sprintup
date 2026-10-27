@@ -2272,6 +2272,9 @@ The feature's live state, written as it happens - a compaction gives no warning.
 **Dispatched:** 2026-10-26 - Phase 1 batch (T2-T8) to a general sub-agent; base commit 1014f9f; returned: complete.
 **Phase 1:** complete 2026-10-27 - T2-T8 implemented, gated, and committed (`631319e`, `05b61c6`, `18b0780`, `44533b8`, `adaa06c`, `4438c33`, `c47a11c`).
 **Host probes:** the Testing-only diagnostics endpoints are mapped only when `ASPNETCORE_ENVIRONMENT=Testing` and `Diagnostics:Enabled=true`; they are never mapped in Development, Staging, or Production.
+**Push policy:** per task - every task commit is pushed to `origin/main` after its gate is green, using SSH (`git@github.com:fabiorhein/sprintup.git`). T1-T8 are published; `origin/main` was at `9bc0582` after the Phase 1 review.
+**Phase 1 verification:** independent review of T5-T8 plus `make build`, `make lint`, and `make harness` with `TEST_DB_CONNECTION` green; 12 integration tests, 0 unit, 0 UI, 0 E2E, 0 performance. Deviations reviewed and accepted: test-only diagnostics endpoints, combined Data Protection/500 test, placeholder `account_status` claim, and the no-op worker seam.
+**Dispatched:** 2026-10-27 - Phase 2 batch (T9-T14, accounts domain) to a general sub-agent; base commit `9bc0582`; returned: pending.
 **Walked:** none
 
 ---
