@@ -13,7 +13,6 @@ public sealed class ProblemDetailsExceptionHandler(
     ILogger<ProblemDetailsExceptionHandler> logger) : IExceptionHandler
 {
     private const string InternalErrorCode = "internal_error";
-    private const string CorrelationHeader = "X-Correlation-ID";
 
     public async ValueTask<bool> TryHandleAsync(
         HttpContext httpContext,
@@ -22,20 +21,20 @@ public sealed class ProblemDetailsExceptionHandler(
     {
         ProblemDetails problemDetails = exception switch
         {
-            DomainException domain => Create(
+            DomainException domain => ProblemDetailsResponse.Create(
                 httpContext,
                 domain.StatusCode,
                 domain.Code,
                 "Request could not be completed",
                 domain.Message),
             ValidationException validation => CreateValidation(httpContext, validation),
-            NotFoundException notFound => Create(
+            NotFoundException notFound => ProblemDetailsResponse.Create(
                 httpContext,
                 404,
                 notFound.Code,
                 "Resource not found",
                 notFound.Message),
-            _ => Create(
+            _ => ProblemDetailsResponse.Create(
                 httpContext,
                 500,
                 InternalErrorCode,
@@ -52,7 +51,8 @@ public sealed class ProblemDetailsExceptionHandler(
         }
 
         httpContext.Response.StatusCode = problemDetails.Status!.Value;
-        httpContext.Response.Headers[CorrelationHeader] = httpContext.TraceIdentifier;
+        httpContext.Response.Headers[ProblemDetailsResponse.CorrelationHeader] =
+            httpContext.TraceIdentifier;
 
         return await problemDetailsService.TryWriteAsync(new ProblemDetailsContext
         {
@@ -64,7 +64,7 @@ public sealed class ProblemDetailsExceptionHandler(
 
     private static ProblemDetails CreateValidation(HttpContext httpContext, ValidationException exception)
     {
-        ProblemDetails problemDetails = Create(
+        ProblemDetails problemDetails = ProblemDetailsResponse.Create(
             httpContext,
             400,
             exception.Code,
@@ -72,27 +72,6 @@ public sealed class ProblemDetailsExceptionHandler(
             "One or more input fields are invalid.");
 
         problemDetails.Extensions["errors"] = exception.Errors;
-        return problemDetails;
-    }
-
-    private static ProblemDetails Create(
-        HttpContext httpContext,
-        int status,
-        string code,
-        string title,
-        string? detail)
-    {
-        ProblemDetails problemDetails = new()
-        {
-            Status = status,
-            Title = title,
-            Detail = detail,
-            Instance = httpContext.Request.Path,
-            Type = $"https://httpstatuses.io/{status}",
-        };
-
-        problemDetails.Extensions["code"] = code;
-        problemDetails.Extensions["correlationId"] = httpContext.TraceIdentifier;
         return problemDetails;
     }
 }

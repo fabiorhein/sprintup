@@ -319,11 +319,11 @@ T73 → T74 → T75 → T76 → T77 → T78 → T79
 
 **Done when**:
 
-- [ ] `/health` reports database readiness; PT-BR is the default culture with EN available; antiforgery and fixed-window rate limits are active.
-- [ ] Data Protection is configured with a persistent key-ring path outside development; startup refuses ephemeral keys on a non-development environment.
-- [ ] Placeholder authentication and policy names (`AthleteOnly`, `ActiveAthlete`, `AssignedCoach`, `CoachReadOnly`, `AdminOnly`) are registered for later tasks.
-- [ ] Tests cover health, default culture, antiforgery failure, rate-limit `429`, and the error shape.
-- [ ] Test count: 5 integration tests pass.
+- [x] `/health` reports database readiness; PT-BR is the default culture with EN available; antiforgery and fixed-window rate limits are active.
+- [x] Data Protection is configured with a persistent key-ring path outside development; startup refuses ephemeral keys on a non-development environment.
+- [x] Placeholder authentication and policy names (`AthleteOnly`, `ActiveAthlete`, `AssignedCoach`, `CoachReadOnly`, `AdminOnly`) are registered for later tasks.
+- [x] Tests cover health, default culture, antiforgery failure, rate-limit `429`, and the error shape.
+- [x] Test count: 5 integration tests pass.
 
 **Tests**: integration
 **Gate**: build
